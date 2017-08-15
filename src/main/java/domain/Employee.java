@@ -8,6 +8,7 @@ public class Employee {
     private String lastName;
     private String gender;
     private String email;
+    private Department department;
 
     public Integer getId() {
         return id;
@@ -39,6 +40,14 @@ public class Employee {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     @Override

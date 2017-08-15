@@ -1,4 +1,6 @@
+import domain.Department;
 import domain.Employee;
+import mybatisInterface.DepartmentMapper;
 import mybatisInterface.EmployeeMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -9,6 +11,8 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by 唐国翔 on 2017/8/12.
@@ -35,7 +39,7 @@ public class MybatisTest {
     }
 
     @Test
-    public void testInterface(){
+    public void testInterfaceReturnObject(){
         SqlSession sqlSession = sessionFactory.openSession();
         EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
         Employee employee = mapper.getEmpById(1);
@@ -43,4 +47,44 @@ public class MybatisTest {
         sqlSession.close();
     }
 
+
+    @Test
+    public void testInterfaceReturnList(){
+        SqlSession sqlSession = sessionFactory.openSession();
+        EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
+        List<Employee> empList = mapper.getEmpAll();
+        for (Employee e:empList) {
+            System.out.println(e);
+        }
+        sqlSession.close();
+    }
+
+    @Test
+    public void testInterfaceReturnMap(){
+        SqlSession sqlSession = sessionFactory.openSession();
+        EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
+        Map<String, Object> empMap = mapper.getEmpByIdReturnMap(1);
+        System.out.println(empMap);
+
+        sqlSession.close();
+    }
+    @Test
+    public void testInterfaceEmpPlus(){
+        SqlSession sqlSession = sessionFactory.openSession();
+        EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
+        Employee empByIdPlus = mapper.getEmpByIdPlus(1);
+        System.out.println(empByIdPlus);
+
+        sqlSession.close();
+    }
+
+    @Test
+    public void testInterfaceDept(){
+        SqlSession sqlSession = sessionFactory.openSession();
+        DepartmentMapper mapper = sqlSession.getMapper(DepartmentMapper.class);
+        Department depart = mapper.getDepart(1);
+        System.out.println(depart);
+
+        sqlSession.close();
+    }
 }
