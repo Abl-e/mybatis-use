@@ -22,6 +22,7 @@
     </environments>
 
     <mappers>
-        <mapper resource="mapper/EmployeeMapper.xml"/>
+       <!-- <mapper resource="mapper/EmployeeMapper.xml"/>-->
+        <package name="mybatisInterface" /><!-- 批量注册 -->
     </mappers>
 </configuration>

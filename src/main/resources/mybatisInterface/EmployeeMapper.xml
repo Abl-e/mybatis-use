@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatisInterface.EmployeeMapper">
+    <select id="getEmpAll" resultType="domain.Employee">
+        select * from mybatis_new.tbl_employee
+    </select>
+    <select id="getEmpById" resultType="domain.Employee">
+        select * from mybatis_new.tbl_employee where id = #{id}
+    </select>
+    <select id="getEmpListById" resultType="domain.Employee">
+        SELECT * FROM mybatis_new.tbl_employee WHERE id = #{id}
+    </select>
+    <select id="getEmpByIdReturnMap" resultType="map">
+        SELECT * FROM mybatis_new.tbl_employee WHERE id = #{id}
+    </select>
+     <resultMap id="empPlus" type="domain.Employee">
+         <id column="id" property="id"/>
+         <result column="last_name" property="lastName"/>
+         <result column="gender" property="gender"/>
+         <result column="email" property="email"/>
+         <association property="department" select="mybatisInterface.DepartmentMapper.getDepart" column="dept_id">
+
+         </association>
+     </resultMap>
+    <select id="getEmpByIdPlus" resultMap="empPlus">
+        SELECT * FROM mybatis_new.tbl_employee WHERE id=#{id}
+    </select>
+</mapper>
