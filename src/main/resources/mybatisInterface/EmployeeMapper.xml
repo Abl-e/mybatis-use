@@ -20,11 +20,16 @@
          <result column="last_name" property="lastName"/>
          <result column="gender" property="gender"/>
          <result column="email" property="email"/>
-         <association property="department" select="mybatisInterface.DepartmentMapper.getDepart" column="dept_id">
-
+         <!-- 定义对象 -->
+         <association property="department" select="mybatisInterface.DepartmentMapper.getDepart" column="dept_id" fetchType="lazy">
          </association>
      </resultMap>
     <select id="getEmpByIdPlus" resultMap="empPlus">
         SELECT * FROM mybatis_new.tbl_employee WHERE id=#{id}
+    </select>
+
+    <!-- 根据部门查询员工list -->
+    <select id="getEmpListByDeptId" resultType="domain.Employee">
+        SELECT * FROM mybatis_new.tbl_employee WHERE dept_id=#{deptId}
     </select>
 </mapper>

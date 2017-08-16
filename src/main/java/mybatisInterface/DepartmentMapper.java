@@ -9,4 +9,5 @@ public interface DepartmentMapper {
 
     Department getDepart(Integer id);
 
+    Department getDepartStep(Integer id);
 }

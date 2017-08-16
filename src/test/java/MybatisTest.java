@@ -74,7 +74,7 @@ public class MybatisTest {
         EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
         Employee empByIdPlus = mapper.getEmpByIdPlus(1);
         System.out.println(empByIdPlus);
-        System.out.println(empByIdPlus.getDepartment());
+        //System.out.println(empByIdPlus.getDepartment());
 
         sqlSession.close();
     }
@@ -85,6 +85,18 @@ public class MybatisTest {
         DepartmentMapper mapper = sqlSession.getMapper(DepartmentMapper.class);
         Department depart = mapper.getDepart(1);
         System.out.println(depart);
+
+        sqlSession.close();
+    }
+
+
+    @Test
+    public void testInterfaceDeptStep(){
+        SqlSession sqlSession = sessionFactory.openSession();
+        DepartmentMapper mapper = sqlSession.getMapper(DepartmentMapper.class);
+        Department department = mapper.getDepartStep(1);
+        System.out.println(department.getDeptName());
+        System.out.println(department.getEmployees());
 
         sqlSession.close();
     }

@@ -57,6 +57,7 @@ public class Employee {
         sb.append(", lastName='").append(lastName).append('\'');
         sb.append(", gender='").append(gender).append('\'');
         sb.append(", email='").append(email).append('\'');
+        sb.append(", department=").append(department);
         sb.append('}');
         return sb.toString();
     }

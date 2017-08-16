@@ -22,4 +22,6 @@ public interface EmployeeMapper {
    Map<Integer,Employee> getEmpByIdReturnMap(String lastName);//封装map 键为实体类属性  值为实体类
 
    Employee getEmpByIdPlus(Integer id);//带有级联属性
+
+   List<Employee> getEmpListByDeptId(Integer deptId);
 }

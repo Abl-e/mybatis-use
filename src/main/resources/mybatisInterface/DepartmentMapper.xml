@@ -7,4 +7,16 @@
         SELECT * from mybatis_new.department WHERE id=#{id}
     </select>
 
+    <resultMap id="stepDept" type="domain.Department">
+        <id column="id" property="id"/>
+        <result column="dept_name" property="deptName"/>
+        <collection property="employees" select="mybatisInterface.EmployeeMapper.getEmpListByDeptId" column="id">
+
+        </collection>
+    </resultMap>
+
+    <select id="getDepartStep" resultMap="stepDept">
+        SELECT * FROM mybatis_new.department WHERE id=#{id}
+    </select>
+
 </mapper>
